@@ -12,13 +12,18 @@ Este repositório contém o código e a documentação para o controle de um mot
   - Motor de passo de alta potência, ideal para aplicações que exigem torque elevado.
   - Passo de 1,8° por pulso (200 passos por revolução no modo completo).
   - Corrente nominal de 2,1A por fase.
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/22316a49-4116-415a-93a0-ab2d05f2d3a9" alt="Motor_nema_23" width="300">
+</p>
 ### 2. **Driver TB6600**
 - **Descrição:**
   - Driver de motor de passo de alta corrente, suporta até 4A.
   - Oferece controle de microstepping (1/2, 1/4, 1/8, etc.) para maior precisão.
   - Proteções contra sobrecorrente e sobretemperatura.
-<img src="https://github.com/user-attachments/assets/2a5b8c2a-2bc2-45d9-b5e5-c677be16b0ed" alt="Driver TB6600" width="400">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2a5b8c2a-2bc2-45d9-b5e5-c677be16b0ed" alt="Driver TB6600" width="300">
+</p>
+
 
 
 
@@ -27,6 +32,10 @@ Este repositório contém o código e a documentação para o controle de um mot
   - Tensão de saída: 24V (ou compatível com o motor e driver).
   - Corrente suficiente para o motor e driver (sugere-se pelo menos 3A para segurança).
   - Conectada ao driver para alimentação do motor.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/621630e5-fdda-4b9e-8d8c-193cfe867658" alt="Fonte_Chaveada" width="300">
+</p>
 
 ### 4. **Arduino UNO**
 - **Descrição:**
