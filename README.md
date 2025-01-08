@@ -18,7 +18,8 @@ Este repositório contém o código e a documentação para o controle de um mot
   - Driver de motor de passo de alta corrente, suporta até 4A.
   - Oferece controle de microstepping (1/2, 1/4, 1/8, etc.) para maior precisão.
   - Proteções contra sobrecorrente e sobretemperatura.
-![Driver TB6600](https://github.com/user-attachments/assets/2a5b8c2a-2bc2-45d9-b5e5-c677be16b0ed)
+<img src="https://github.com/user-attachments/assets/2a5b8c2a-2bc2-45d9-b5e5-c677be16b0ed" alt="Driver TB6600" width="400">
+
 
 
 ### 3. **Fonte Chaveada**
