@@ -11,15 +11,16 @@ Este repositório contém o código e a documentação para o controle de um mot
 - **Descrição:**
   - Motor de passo de alta potência, ideal para aplicações que exigem torque elevado.
   - Passo de 1,8° por pulso (200 passos por revolução no modo completo).
-  - Corrente nominal de 2,1A por fase.
+  
 <p align="center">
   <img src="https://github.com/user-attachments/assets/22316a49-4116-415a-93a0-ab2d05f2d3a9" alt="Motor_nema_23" width="300">
 </p>
+
 ### 2. **Driver TB6600**
 - **Descrição:**
   - Driver de motor de passo de alta corrente, suporta até 4A.
   - Oferece controle de microstepping (1/2, 1/4, 1/8, etc.) para maior precisão.
-  - Proteções contra sobrecorrente e sobretemperatura.
+  - Proteções contra sobrecorrente e sobretemperatura.  
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2a5b8c2a-2bc2-45d9-b5e5-c677be16b0ed" alt="Driver TB6600" width="300">
 </p>
@@ -63,7 +64,9 @@ As conexões foram realizadas conforme descrito abaixo. Foi feito um **jumper** 
 ### Ligações do Motor com o Driver ( siga as cores que identificão o A+, A-, B+, e B- que vem no motor de passo)
 - **A+ e A-** → Conectados à bobina A do motor
 - **B+ e B-** → Conectados à bobina B do motor
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8f801a8c-cd2e-4d74-886e-cb4b06149543" alt="Foto_Circuito" width="400">
+</p>
 ---
 
 ## Funcionamento do Sistema
@@ -81,7 +84,7 @@ As conexões foram realizadas conforme descrito abaixo. Foi feito um **jumper** 
 2. Carregue o código fornecido no Arduino UNO.
 3. Ajuste as configurações no driver (Pulse/rev e Current) de acordo com a documentação:
    - **Pulse/rev:** Configurado para 1600 pulsos por revolução (1/8 microstepping).
-   - **Current (A):** Configurado para 2,1A ou 2,9A.
+   - **Current (A):** Configurado para 2,8A.
 4. Alimente o circuito e teste o motor de passo.
 
 ---
@@ -89,4 +92,10 @@ As conexões foram realizadas conforme descrito abaixo. Foi feito um **jumper** 
 ## Observações
 - Certifique-se de que todos os fios estejam bem conectados para evitar falhas.
 - Utilize uma fonte compatível com o consumo do motor para evitar sobrecarga.
+## Projeto Funcionando
+No codigo é implementado para fazer o motor dar uma volta completa no sentido horario e em seguida uma volta completa no sentido anti-horario.
+
+https://github.com/user-attachments/assets/5461bc54-99f4-4085-a28d-0024d30433de
+
+
 
