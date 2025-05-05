@@ -8,7 +8,6 @@
 //================= PUL-    --> GND Arduino
 //================= GND     --> GND da Fonte Externa
 //================= VCC     --> Fonte Externa 
-
 /*
 Graus validos:
                 0.225
@@ -32,7 +31,6 @@ Graus validos:
                 70
                 180
 */
-
 //=================> Declarações
 const int stepPin = 5;
 const int dirPin  = 2;
