@@ -11,11 +11,13 @@
 
 /*
 Graus validos:
-                0.9                         36
-                1.125                       45
-                1.8                         72
-                2.25                        90
-                3.6                         180
+                0.225
+                0.45
+                0.9                         
+                1.125                       
+                1.8                         
+                2.25                        
+                3.6                         
                 4.5                          
                 5.625                       
                 7.2                         
@@ -24,15 +26,18 @@ Graus validos:
                 14.4                        
                 18
                 22.5
-               
-
+                36
+                45
+                72
+                70
+                180
 */
 
 //=================> Declarações
 const int stepPin = 5;
 const int dirPin  = 2;
 const int enPin   = 8;
-const int ledPin  = 13;
+const int ledPin  = 3; // Define o pino que controla o relé (a fonte)
 
 const int stepsPerRevolution = 1600;
 const float grausPorRevolucao = 360.0;
@@ -46,7 +51,7 @@ void setup() {
   pinMode(ledPin, OUTPUT);
 
   digitalWrite(enPin, LOW);
-  digitalWrite(ledPin, LOW);
+  digitalWrite(ledPin, HIGH);
 
   Serial.begin(9600);
   Serial.println("Sistema pronto. Envie 1 para girar ou 2 para ligar o LED.");
@@ -79,14 +84,16 @@ void girarGraus(float graus) {
 }
 
 void disparaFonte() {
-  digitalWrite(ledPin, HIGH);
-  Serial.println("LED ligado (Fonte disparada).");
+  digitalWrite(ledPin, LOW); // Ativa o relé (nível lógico baixo)
+  Serial.println("Fonte disparada (relé ligado).");
+  delay(5000); // Mantém ligado por 5 segundos
+  digitalWrite(ledPin, HIGH); // Desativa o relé
+  Serial.println("Fonte desligada (relé desligado).");
 }
 
 void loop() {
   
   if (Serial.available()) {
-    digitalWrite(ledPin, LOW);
     String comando = Serial.readStringUntil('\n');
     comando.trim();
 
@@ -96,7 +103,7 @@ void loop() {
       girarGraus(graus);
     } 
     else if (comando == "2") {
-      disparaFonte(); // liga o LED
+      disparaFonte();
     } 
     else {
       Serial.println("Comando inválido.");
