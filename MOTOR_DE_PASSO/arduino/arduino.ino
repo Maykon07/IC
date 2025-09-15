@@ -54,7 +54,7 @@ void setup() {
   digitalWrite(ledPin, HIGH);
 
   Serial.begin(9600);
-  Serial.println("Sistema pronto. Envie 1 para girar ou 2 para ligar o LED.");
+  Serial.println("Sistema pronto. Envie 1 para girar, 2 Diparar fonte, 3 reinicar contador de graus");
 }
 
 void girarGraus(float graus) {
@@ -62,6 +62,9 @@ void girarGraus(float graus) {
     Serial.println("Movimento inválido, excede 360° ou é zero.");
     return;
   }
+
+  // Ativa driver antes de girar
+  digitalWrite(enPin, LOW); // habilita TB6600
 
   int passos = (int)((graus / grausPorRevolucao) * stepsPerRevolution);
 
@@ -81,6 +84,15 @@ void girarGraus(float graus) {
   Serial.print("Total girado: ");
   Serial.print(grausAcumulados, 2);
   Serial.println(" graus.");
+
+  if (abs(grausAcumulados - 360.0) < 0.01) {
+    grausAcumulados = 0.0;
+    Serial.println("Total de Graus igual a 360, contador de graus zerado!!");
+}
+
+  // Desativa driver para reduzir aquecimento enquanto o motor está parado
+  digitalWrite(enPin, HIGH); // desabilita TB6600 (reduz corrente nas bobinas)
+
 }
 
 void disparaFonte() {
@@ -91,6 +103,14 @@ void disparaFonte() {
   Serial.println("Fonte desligada (relé desligado).");
 }
 
+void reinicarContador(){
+  grausAcumulados  = 0.0;
+  Serial.println("Contador de graus zerado!!");
+  Serial.print("Total girado: ");
+  Serial.print(grausAcumulados, 2);
+  Serial.println(" graus.");
+}
+
 void loop() {
   
   if (Serial.available()) {
@@ -98,12 +118,15 @@ void loop() {
     comando.trim();
 
     if (comando == "1") {
+      Serial.println("Insira quantos graus quer mover!! ");
       while (Serial.available() == 0); // espera valor dos graus
       float graus = Serial.readStringUntil('\n').toFloat();
       girarGraus(graus);
     } 
     else if (comando == "2") {
       disparaFonte();
+    }else if (comando == "3") {
+      reinicarContador();
     } 
     else {
       Serial.println("Comando inválido.");
