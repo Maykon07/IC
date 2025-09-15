@@ -97,5 +97,12 @@ No codigo é implementado para fazer o motor dar uma volta completa no sentido h
 
 https://github.com/user-attachments/assets/5461bc54-99f4-4085-a28d-0024d30433de
 
+---
+
+### Diagrama Do Circuito 
+
+<img width="833" height="738" alt="image" src="https://github.com/user-attachments/assets/952a7f97-9464-4933-be47-1fc0aa42cab3" />
+
+
 
 
