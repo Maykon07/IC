@@ -54,7 +54,7 @@ void setup() {
   digitalWrite(ledPin, HIGH);
 
   Serial.begin(9600);
-  Serial.println("Sistema pronto. Envie 1 para girar, 2 Diparar fonte, 3 reinicar contador de graus");
+  Serial.println("Sistema pronto. Envie 1 para girar, 2 para disparar a fonte, 3 para girar uma volta completa, 4 para reiniciar o contador.");
 }
 
 void girarGraus(float graus) {
@@ -62,9 +62,6 @@ void girarGraus(float graus) {
     Serial.println("Movimento inválido, excede 360° ou é zero.");
     return;
   }
-
-  // Ativa driver antes de girar
-  //digitalWrite(enPin, LOW); // habilita TB6600
 
   int passos = (int)((graus / grausPorRevolucao) * stepsPerRevolution);
 
@@ -85,14 +82,10 @@ void girarGraus(float graus) {
   Serial.print(grausAcumulados, 2);
   Serial.println(" graus.");
 
-  if (abs(grausAcumulados - 360.0) < 0.01) {
+    if (abs(grausAcumulados - 360.0) < 0.01) {
     grausAcumulados = 0.0;
     Serial.println("Total de Graus igual a 360, contador de graus zerado!!");
-}
-
-  // Desativa driver para reduzir aquecimento enquanto o motor está parado
-  //digitalWrite(enPin, HIGH); // desabilita TB6600 (reduz corrente nas bobinas)
-
+    }
 }
 
 void disparaFonte() {
@@ -101,6 +94,12 @@ void disparaFonte() {
   delay(5000); // Mantém ligado por 5 segundos
   digitalWrite(ledPin, HIGH); // Desativa o relé
   Serial.println("Fonte desligada (relé desligado).");
+}
+
+void girandoVolta(){
+  grausAcumulados = 0.0;
+  for(int i = 0; i<200; i++)
+    girarGraus(1.8);
 }
 
 void reinicarContador(){
@@ -118,19 +117,19 @@ void loop() {
     comando.trim();
 
     if (comando == "1") {
-      Serial.println("Insira quantos graus quer mover!! ");
       while (Serial.available() == 0); // espera valor dos graus
       float graus = Serial.readStringUntil('\n').toFloat();
       girarGraus(graus);
     } 
     else if (comando == "2") {
       disparaFonte();
-    }else if (comando == "3") {
+    }
+    else if (comando == "3") {
+      girandoVolta();
+    }else if (comando == "4") {
       reinicarContador();
     } 
     else {
       Serial.println("Comando inválido.");
     }
   }
-}
-
