@@ -99,9 +99,12 @@ https://github.com/user-attachments/assets/5461bc54-99f4-4085-a28d-0024d30433de
 
 ---
 
-### Diagrama Do Circuito 
+### Diagrama Do Circuito com Arduino
 
 <img width="833" height="738" alt="image" src="https://github.com/user-attachments/assets/952a7f97-9464-4933-be47-1fc0aa42cab3" />
+
+### Diagrama Do Circuito com Raspberry
+<img width="866" height="710" alt="Captura de tela 2025-12-13 184954" src="https://github.com/user-attachments/assets/35b3842f-fb2f-43c4-ac95-adc0caf93196" />
 
 
 
